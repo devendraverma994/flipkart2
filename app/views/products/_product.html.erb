@@ -1,0 +1,43 @@
+<div class="container form-container ">
+  <%= form_with model: @product do |form| %>
+    <div>
+      <%= form.label :name %><br>
+      <%= form.text_field :name, required: true,class:"form-control", autofocus: true, placeholder: "Enter product name" %>
+      <% @product.errors.full_messages_for(:name).each do |message| %>
+        <div><%= message %></div>
+      <% end %>
+    </div>
+    <br>
+
+    <div>
+      <%= form.label :description %><br>
+      <%= form.text_area :description,class:"form-control" %><br>
+      <% @product.errors.full_messages_for(:description).each do |message| %>
+        <div><%= message %></div>
+      <% end %>
+    </div>
+    <br>
+
+    <div>
+      <%= form.label :picture %><br>
+      <%= form.file_field :picture,class:"form-control" %><br>
+      <% @product.errors.full_messages_for(:picture).each do |message| %>
+        <div><%= message %></div>
+      <% end %>
+    </div>
+    <br>
+
+    <div>
+      <%= form.label :price %><br>
+      <%= form.text_field :price, required: true,class:"form-control" %><br>
+      <% @product.errors.full_messages_for(:price).each do |message| %>
+        <div><%= message %></div>
+      <% end %>
+    </div>
+    <br>
+
+    <div>
+      <%= form.submit class:"btn btn-primary"%>
+    </div>
+  <% end %>
+</div>

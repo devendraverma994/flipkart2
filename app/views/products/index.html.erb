@@ -1,0 +1,37 @@
+<h1>Products</h1>
+
+<strong>Total Products:- <%= @products.count %></strong>
+&emsp;
+<% if user_signed_in? && current_user.has_role?(:seller) %>
+  <%= link_to "New Product", new_product_path, class:"btn btn-success" %>
+<%end%>
+
+<div class="container">
+  <div class="row row-cols-5 ">
+    <% @products.each do |product| %>
+      <div class="card m-4">
+        <%= image_tag (product.picture), class:"product-img" %>
+        <div class="card-body">
+          <h5 class="card-title"><%= product.name %></h5>
+          <p class="card-text"><%= product.description %></p>
+          <p class="card-text"><b>Rs&nbsp<%= product.price %></b></p>
+        </div>
+        <% if user_signed_in? && current_user.has_role?(:seller) %>
+          <div class="d-flex mb-3">
+            <%= link_to 'Edit Product', edit_product_path(product), class:"btn-product btn btn-primary me-2" %>
+            <%= link_to "Destroy Product", product_path(product),data: { turbo_method: :delete }, class:"btn-product btn btn-danger" %>
+          </div>
+        <%else %>
+          <div class="d-flex mb-3">
+            <%= link_to 'Add To Cart', line_items_path(:product_id => product.id),data: { turbo_method: :post }, class:"btn-product btn btn-success me-2" %>
+            <%= link_to "View Detail", product_path(product), class:"btn-product btn btn-info" %>
+          </div>
+        <%end %>
+      </div>
+    <% end %>
+  </div>
+</div>
+
+
+
+

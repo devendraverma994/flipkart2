@@ -1,0 +1,24 @@
+<div class="card mt-3" style="max-width: 100%; height: 100px position:absolute ">
+  <div class="row g-0">
+    <div class="col-md-4 d-flex justify-content-center">
+      <%= image_tag (@product.picture), style: 'height:240px;width:auto;'%>
+    </div>
+    <div class="col-md-8">
+      <div class="card-body">
+        <h4 class="card-title"><%= @product.name %></h4>
+        <p class="card-text"><%= @product.description %></p>
+        <h4 class="card-text"><%= @product.price %></h4>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container mt-4">
+  <h2>Reviews</h2>
+  <br>
+  <%= render @product.reviews %> 
+  <%# <% <%= render 'reviews/review'%>  
+  <br>
+  <h2>Add Review:</h2>
+  <%= link_to "Add Review", edit_product_review_path(@product), class:"btn btn-primary mb-5" %>
+</div>
