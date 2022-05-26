@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   devise_for :users, :controllers => {:registrations => "users/registrations"}
-  root "products#index"
+
+  root 'products#index'
   post '/add_to_cart', to: 'carts#add_to_cart'
   post 'line_items' => "line_items#create"
 

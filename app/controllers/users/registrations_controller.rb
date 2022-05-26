@@ -13,6 +13,8 @@ class Users::RegistrationsController < Devise::RegistrationsController
   def create
     super
     @user.add_role(params[:user][:roles])
+
+    GreetingMailer.with(user: @user).greeting_email.deliver_later
   end
 
   # GET /resource/edit
