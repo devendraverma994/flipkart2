@@ -1,5 +1,7 @@
-class GreetingMailer < ApplicationMailer
+# frozen_string_literal: true
 
+# Description/Explanation of GreetingMailer class
+class GreetingMailer < ApplicationMailer
   def greeting_email
     @user = params[:user]
 

@@ -1,3 +1,6 @@
+# frozen_string_literal: true
+
+# Description/Explanation of Product class
 class ProductsController < ApplicationController
   def index
     @products = Product.all

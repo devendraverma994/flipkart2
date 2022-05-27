@@ -31,9 +31,9 @@
     </div>
   </div>
 <% end %>
-
+<br>
 <h3>Sub total: ₹<%= @cart.sub_total %></h3>
 
-<div style="max-width: 20%;">
+<div style="max-width: 20%; margin-bottom: 10px;">
   <%= link_to "Empty cart", cart_path(@current_cart), data: { turbo_method: :delete, confirm: "Are you sure?"}, class:"btn btn-danger"%>
 </div>

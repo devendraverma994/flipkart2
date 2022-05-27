@@ -1,3 +1,6 @@
+# frozen_string_literal: true
+
+# Description/Explanation of Review class
 class ReviewsController < ApplicationController
   def create
     @product = Product.find(params[:product_id])

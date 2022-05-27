@@ -1,6 +1,7 @@
-class CartsController < ApplicationController
-  # before_action :authenticate_user!
+# frozen_string_literal: true
 
+# Description/Explanation of CartsController class
+class CartsController < ApplicationController
   def index
     @cart = @current_cart
   end
