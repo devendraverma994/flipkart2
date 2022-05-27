@@ -7,14 +7,14 @@ class LineItemsController < ApplicationController
     chosen_product = Product.find(params[:product_id])
 
     if current_cart.products.include?(chosen_product)
-      @line_item = current_cart.line_items.find_by(product_id: chosen_product).quantity += 1
+      @line_item = current_cart.line_items.find_by(product_id: chosen_product)
+      @line_item.quantity += 1
     else
       @line_item = LineItem.new
       @line_item.cart = current_cart
       @line_item.product = chosen_product
     end
-    @line_item.save
-    redirect_to cart_path(current_cart)
+    redirect_to cart_path(current_cart) if @line_item.save
   end
   # rubocop:enable Metrics/AbcSize
 
