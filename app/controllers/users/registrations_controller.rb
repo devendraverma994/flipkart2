@@ -16,6 +16,8 @@ module Users
       super
       @user.add_role(params[:user][:roles])
 
+      @user.save
+
       GreetingMailer.with(user: @user).greeting_email.deliver_later
     end
 

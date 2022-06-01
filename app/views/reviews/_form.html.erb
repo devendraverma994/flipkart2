@@ -1,10 +1,6 @@
 <div class="container form-container ">
   <%= form_with model: [ @product, @product.reviews.build ] do |form| %>
     <p>
-      <%= form.label :reviewer %><br>
-      <%= form.text_field :reviewer, class:"form-control" %>
-    </p>
-    <p>
       <%= form.label :body %><br>
       <%= form.text_area :body, class:"form-control" %>
     </p>

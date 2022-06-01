@@ -2,14 +2,14 @@
 
 # Description/Explanation of CartsController class
 class CartsController < ApplicationController
+  # before_action :authenticate_user!
   def index
-    @cart = @current_cart
+    @cart = current_user.cart
   end
 
   def destroy
-    @cart = @current_cart
-    @cart.destroy
-    session[:cart_id] = nil
+    @cart = current_user.cart
+    @cart.line_items.destroy_all
     redirect_to root_path
   end
 end

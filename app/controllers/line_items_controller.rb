@@ -2,9 +2,13 @@
 
 # Description/Explanation of Application class
 class LineItemsController < ApplicationController
+  before_action :authenticate_user!
+
   # rubocop:disable Metrics/AbcSize
+
   def create
     chosen_product = Product.find(params[:product_id])
+    current_cart = current_user.cart
 
     if current_cart.products.include?(chosen_product)
       @line_item = current_cart.line_items.find_by(product_id: chosen_product)
@@ -14,7 +18,7 @@ class LineItemsController < ApplicationController
       @line_item.cart = current_cart
       @line_item.product = chosen_product
     end
-    redirect_to cart_path(current_cart) if @line_item.save
+    redirect_to carts_path(current_cart) if @line_item.save
   end
   # rubocop:enable Metrics/AbcSize
 
@@ -22,14 +26,14 @@ class LineItemsController < ApplicationController
     @line_item = LineItem.find(params[:id])
     @line_item.quantity += 1
     @line_item.save
-    redirect_to cart_path(@current_cart)
+    redirect_to cart_path
   end
 
   def reduce_quantity
     @line_item = LineItem.find(params[:id])
     @line_item.quantity -= 1 if @line_item.quantity > 1
     @line_item.save
-    redirect_to cart_path(@current_cart)
+    redirect_to cart_path
   end
 
   def destroy
