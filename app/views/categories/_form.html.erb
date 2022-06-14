@@ -1,0 +1,11 @@
+<div class="container form-container">
+  <%= form_with model: @category do |form| %>
+    <p>
+      <%= form.label :name %><br>
+      <%= form.text_area :name, class:"form-control" %>
+    </p>
+    <p>
+      <%= form.submit class:"btn btn-primary" %>
+    </p>
+  <% end %>
+</div>
