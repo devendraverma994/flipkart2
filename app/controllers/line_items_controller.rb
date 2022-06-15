@@ -1,15 +1,15 @@
 # frozen_string_literal: true
 
-# Description/Explanation of Application class
+# Description/Explanation of LineItemController class
 class LineItemsController < ApplicationController
   before_action :authenticate_user!
 
   # rubocop:disable Metrics/AbcSize
+  # rubocop:disable Metrics/MethodLength
 
   def create
     chosen_product = Product.find(params[:product_id])
     current_cart = current_user.cart
-
     if current_cart.products.include?(chosen_product)
       @line_item = current_cart.line_items.find_by(product_id: chosen_product)
       @line_item.quantity += 1
@@ -48,3 +48,5 @@ class LineItemsController < ApplicationController
     params.require(:line_item).permit(:quantity, :product_id, :cart_id)
   end
 end
+
+# rubocop:enable Metrics/MethodLength

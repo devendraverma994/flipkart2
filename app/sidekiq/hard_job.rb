@@ -4,7 +4,7 @@
 class HardJob
   include Sidekiq::Job
 
-  def perform(*args)
+  def perform(*_args)
     puts 'Hello'
   end
 end

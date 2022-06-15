@@ -1,3 +1,6 @@
+# frozen_string_literal: true
+
+# Description/Explanation of OrederMailerJob class
 class OrderMailerJob < ApplicationJob
   queue_as :default
 

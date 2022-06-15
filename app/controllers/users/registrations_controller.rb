@@ -14,6 +14,7 @@ module Users
     # POST /resource
     def create
       super
+
       @user.add_role(params[:user][:roles])
 
       @user.save

@@ -14,6 +14,8 @@ gem 'rolify'
 
 gem 'byebug', '~> 9.0', '>= 9.0.6'
 
+gem 'letter_opener', group: :development
+
 # The original asset pipeline for Rails [https://github.com/rails/sprockets-rails]
 gem 'sprockets-rails'
 
@@ -59,6 +61,8 @@ gem 'will_paginate-bootstrap'
 # Use Sass to process CSS
 gem 'sassc-rails'
 
+gem 'sidekiq'
+
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
 # gem 'image_processing', '~> 1.2'
 
@@ -76,6 +80,11 @@ group :development do
 
   # Speed up commands on slow machines / big apps [https://github.com/rails/spring]
   # gem 'spring'
+end
+
+group :development, :test do
+  gem 'rspec-rails', '>= 3.9.0'
+  gem 'shoulda-matchers'
 end
 
 group :test do

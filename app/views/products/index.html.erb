@@ -1,9 +1,9 @@
 <h1>Products</h1>
 
-<strong>Total Products:- <%= @products.count %></strong>
 &emsp;
 <% if user_signed_in? && current_user.has_role?(:seller) %>
   <%= link_to "New Product", new_product_path, class:"btn btn-success" %>
+  <%= link_to "Category", new_category_path, class:"btn btn-primary" %>
 <%end%>
 
 <div class="container">
@@ -31,6 +31,5 @@
     <% end %>
   </div>
 </div>
-
 
 <%= will_paginate @products %>

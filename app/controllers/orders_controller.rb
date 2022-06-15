@@ -11,6 +11,7 @@ class OrdersController < ApplicationController
     @orders = Order.all
     current_user.cart.line_items.each do |item|
       item.destroy
+      @product = item
     end
     OrderMailerJob.perform_later(user: current_user.id)
   end

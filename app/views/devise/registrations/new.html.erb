@@ -28,8 +28,6 @@
     <br>
     <div class="field">
       <%= f.label :role %><br />
-      <%# <%= f.select :roles, Role.all.pluck(:name), class: "form-control" %> 
-      <%# <%= f.collection_select :roles, Role.order(:name),:id,:name, include_blank: true %> 
       <%= f.select :roles, ['buyer', 'seller'] %>
     </div>
     <br>

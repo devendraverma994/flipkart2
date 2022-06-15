@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-# Description/Explanation of Product class
+# Description/Explanation of ProductController class
 class ProductsController < ApplicationController
   def index
     @products = Product.all.paginate(page: params[:page], per_page: 8)
@@ -48,6 +48,6 @@ class ProductsController < ApplicationController
   private
 
   def product_params
-    params.require(:product).permit(:name, :description, :picture, :price)
+    params.require(:product).permit(:name, :description, :picture, :price, :category_id)
   end
 end
